@@ -1,0 +1,22 @@
+.historial-container {
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .historial-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .historial-table th, .historial-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .historial-table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  

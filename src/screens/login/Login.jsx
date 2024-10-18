@@ -29,6 +29,7 @@ export default function Login() {
             <input type="text" placeholder="username" />
             <input type="password" placeholder="password" />
             <button type="submit">Login</button>
+            
             <p className="message">
               Not registered? <a href="/register" onClick={toggleForm}>Create an account</a>
             </p>
