@@ -1,33 +1,38 @@
 .reportes-container {
-    padding: 20px;
-    background-color: #f4f4f4;
-  }
-  
-  .reporte-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .input-field {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  .submit-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
+  max-width: 420px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  margin: 40px auto;
+  text-align: center;
+  border-radius: 10px;
+
+
+}
+
+.reporte-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.input-field {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}

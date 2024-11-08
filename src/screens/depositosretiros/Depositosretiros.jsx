@@ -1,24 +1,43 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import Navbar from "../../components/Navbar"; 
 import './Depositoretiros.css'; 
+
 const DepositosRetiros = () => {
   const [accountNumber, setAccountNumber] = useState("");
   const [amount, setAmount] = useState("");
   const [operationType, setOperationType] = useState("deposito");
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (accountNumber && amount) {
-      if (operationType === "deposito") {
-        setMessage(`Depósito de $${amount} realizado en la cuenta ${accountNumber}.`);
-        // Aquí puedes agregar la lógica para realizar el depósito real
-      } else if (operationType === "retiro") {
-        setMessage(`Retiro de $${amount} realizado de la cuenta ${accountNumber}.`);
-        // Aquí puedes agregar la lógica para realizar el retiro real
+      try {
+        const response = await axios.post('http://localhost:5000/api/transacciones', {
+          cuenta_id: accountNumber,
+          tipo: operationType,
+          monto: parseFloat(amount),
+        });
+        
+        if (response.status === 200 || response.status === 201) {
+          setMessage(`Operación exitosa: ${operationType === "deposito" ? "Depósito" : "Retiro"} de $${amount}`);
+          setError("");
+          // Limpiar los campos después de una operación exitosa
+          setAccountNumber("");
+          setAmount("");
+          setOperationType("deposito");
+        } else {
+          setError("No se pudo realizar la operación.");
+        }
+      } catch (error) {
+        setError("Hubo un error al realizar la operación.");
+        console.error(error);
       }
     } else {
-      setMessage("Por favor, completa todos los campos antes de realizar la operación.");
+      setError("Por favor, completa todos los campos antes de realizar la operación.");
+      setMessage("");
     }
   };
 
@@ -63,7 +82,9 @@ const DepositosRetiros = () => {
           <button type="submit" className="submit-button">Realizar Operación</button>
         </form>
 
-        {message && <p className="message">{message}</p>}
+        {/* Mensajes de éxito o error */}
+        {error && <p className="error-message">{error}</p>}
+        {message && <p className="success-message">{message}</p>}
       </div>
     </div>
   );

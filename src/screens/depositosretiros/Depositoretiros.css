@@ -1,6 +1,9 @@
 .depositos-retiros-container {
     padding: 20px;
     background-color: #f4f4f4;
+    margin: 40px auto;
+    border-radius: 10px;
+
   }
   
   .operacion-form {
